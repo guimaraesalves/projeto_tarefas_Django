@@ -1,0 +1,62 @@
+Criando a primeira aplicação
+
+1) criando a primeira aplicação
+No terminal:
+$ python manage.py startapp contas
+startapp importantissimo
+
+migrates: banco de dados
+
+Ir para o settings.py e registrar a app!
+INSTALLED_APPS = [
+'contas',
+]
+
+
+2) Criar o  banco de dados:
+TERMINAL:
+$ python manage.py migrate
+
+3) ver a aplicação rodando pela primeira vez
+TERMINAL:
+$ python manage.py runserver
+ctrl + c --> parar o servidor
+
+4)criar um super usuário para logar na minha aplicação:
+atraves da app que ja vem no django chamada admin(settings.py)
+TERMINAL
+$ python manage.py createsuperuser
+$ UserName (leave blank to use 'django'): Mateus
+$ email address: alvesguimaraes45@gmail.com
+$ Password: 232025
+$ Password (again): 232025
+
+5) Testar a aplicação de novo
+TERMINAL:
+$ python manage.py runserver
+
+6) aonde fica a aplicação?
+fica na urls.py:
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+Vamos no browser e na url digitar:
+http://127.0.0.1:8000/admin
+todo o gerenciamento do usuario:
+novos usuarios, senhas, etc...
+
+ %%%%%%%%%%% show!!!!!
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+

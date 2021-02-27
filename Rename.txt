@@ -137,8 +137,18 @@ CTRL + C = PARAR O SERVIDOR.
 
 TERMINAL:
 $ python manage.py makemigrations
-cria um arquivo migrations dentro da pasta conta
+cria um arquivo migrations dentro da pasta conta que descreve como o
+o django deve criar as tabelas no banco de dados
 
+TERMINAL: DEPOIS DE CRIAR O MIGRATIONS (makemigrations) rodar o migration
+criado
+$ python manage.py migrate
+ tabela criada,
+ para verificar ir no arquivo admin.py importar a classe categoria e executar
+ no django admin
+
+ Rodar o server novamente
+ $ python manage.py runserver
 
 
 

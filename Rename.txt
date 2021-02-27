@@ -46,7 +46,82 @@ todo o gerenciamento do usuario:
 novos usuarios, senhas, etc...
 
  %%%%%%%%%%% show!!!!!
- 
+ ENTENDO URL'S:
+ A url pergunta para a view, precisamos atualizar na url
+ A REQUEST COMEÇA NA URL E DEPOIS VAI PARA VIEW!!!
+
+
+TEMOS QUE CRIAR UMA VIEW E INDICAR O CAMINHO NO CODIGO ABAIXO
+no arquivo urls.py
+from django.contrib import admin
+from django.urls import path
+from .contas.views import <<nome da view criada>>
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+
+
+AULA9 - ENTENDENDO AS VIEWS
+
+VIEW - trecho de código que define o que vai acontecer
+
+link da documentaçaõ:
+https://docs.djangoproject.com
+
+7) Na views.py colocamos uma a função:
+from django.http import HttpResponse
+import datetime
+
+def data(request):
+    now = datetime.datetime.now()
+    html = "<html><body>It is now %s.</body></html>" % now
+    return HttpResponse(html)
+
+    current_datetime ---> colocar na urls
+
+
+Depois ir no navegador e colocar 127.0.0.1:8000/contas/
+
+
+AULA 10 - RETORNANDO UM TEMPLATE
+alterando a função na views
+
+def data(request):
+    now = datetime.datetime.now()
+    #html = "<html><body>It is now %s.</body></html>" % now
+    return render(request, 'data.html')
+
+    current_datetime ---> colocar na urls
+
+O template data.html não existe temos que criar:
+criar uma pasta templates dentro da APP!---contas
+e dentro da nova pasta criada TEMPLATES criar uma pasta
+com o mesmo nome da APP (contas)
+
+aí coloca nos parametros de retorno:'contas/home.html'
+def data(request):
+    now = datetime.datetime.now()
+    #html = "<html><body>It is now %s.</body></html>" % now
+    return render(request, 'contas/data.html')
+
+Dentro da pasta recem criada CONTAS criar o arquivo html
+data.html
+html:5 + tab
+
+Voltando na urls.py
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('data/', data)
+]
+
+
+
+
+
+
+
 
 
 

@@ -28,6 +28,33 @@ def nova_transacao(request):
     date1['form'] = form
     return render(request, 'contas/form.html', date1)
 
+def update(request, pk): # um parametro a mais agora a pk.
+    date1 = {}
+
+    transacao = Transacao.objects.get(pk=pk) # buscar no BD, localiza e cria um obj transacao
+    # fazer um form só que agora passamos um atributo para ele nao passar um vazio
+    form = TransacaoForm(request.POST or None, instance=transacao)
+
+    if form.is_valid():
+        form.save()
+        return redirect('url_listagem')
+
+    date1['form'] = form
+    date1['obj'] = transacao #para buscar no delete
+    return render(request, 'contas/form.html', date1)
+
+
+def delete(request, pk):
+    obj = Transacao.objects.get(pk=pk)
+    obj.delete()
+    return redirect('url_listagem')
+
+
+
+
+
+
+
 
 
 

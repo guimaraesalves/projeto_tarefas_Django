@@ -250,6 +250,43 @@ form.html
 </body>
 
 
+%%%%%% AULA 16 - DESENVOLVENDO UM CRUD | UPDATE
+1) criar uma nova url:
+pasta views.py, aonde ficam as funções:
+
+
+
+
+na pasta urls.py
+
+   from django.contrib import admin
+from django.urls import path
+from contas.views import data, listagem, nova_transacao, update
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', listagem, name='url_listagem'),
+    path('nova/', nova_transacao, name='url_nova'),
+    path('update/<int:pk/', update, name='url_update'),
+    path('data/', data)
+]
+
+%%% AULA 17  -DESENVOLVENDO UM CRUD | DELETE
+Começando pela urls.py duplicando o path('update/<int:pk/', update, name='url_update'),
+ e muda para delete pois as duas são bem parecidas
+ path('delete/<int:pk/', delete, name='url_delete'), --> lembrar de importar
+
+ definir a função na view
+ def delete(request, pk),
+
+
+
+
+
+
+
+
+
 
 
 

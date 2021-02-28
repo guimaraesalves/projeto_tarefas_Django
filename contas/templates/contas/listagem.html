@@ -7,15 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tarefas</title>
 </head>
-<body style="background-color: #bed0ed">
+<body style="background-color: #ccccb3">
     <h1 style="text-align: center;">Lista de Tarefas</h1>
-    <ul>
+    <form action="/pagina-processa-dados-do-form" method="post"
+style="margin: 0 auto;
+    width: 400px;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;">
+
+        <ul>
     {% for transacao in transacoes %}
-        <li>{{ transacao.categoria }} - {{ transacao.descricao}} - {{transacao.data}} - {{transacao.observacoes}}</li>
+        <li><a href="{% url 'url_update' transacao.id %}"> {{ transacao.categoria }} - {{ transacao.descricao}} - {{transacao.data}} - {{transacao.observacoes}}</a></li>
         <br>
     {% endfor %}
     </ul>
-    <a href="{% url 'url_nova' %}">Novo</a>
+    <a href="{% url 'url_nova' %}">Novo</a
+
+    </form>
 
 </body>
 </html>

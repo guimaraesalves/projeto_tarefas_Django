@@ -5,23 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Transação</title>
+    <title>Tarefas</title>
 </head>
-<body>
-    <h1>Hello, World!!</h1>
-
-    <ul><strong>Agora são: {{ now }}</strong></ul>
-
+<body style="background-color: #bed0ed">
+    <h1 style="text-align: center;">Lista de Tarefas</h1>
     <ul>
     {% for transacao in transacoes %}
-        {% if transacao == "Python"%}
-            <li><b>{{ transacao }}</b></li>
-        {% else %}
-            <li>{{ transacao }}</li>
-        {% endif %}
+        <li>{{ transacao.categoria }} - {{ transacao.descricao}} - {{transacao.data}} - {{transacao.observacoes}}</li>
         <br>
     {% endfor %}
     </ul>
+    <a href="{% url 'url_nova' %}">Novo</a>
 
 </body>
 </html>

@@ -1,5 +1,7 @@
 Criando a primeira aplicação
 
+GREGORY PACHECO - CANAL YOUTUBE
+
 1) criando a primeira aplicação
 No terminal:
 $ python manage.py startapp contas
@@ -149,6 +151,119 @@ $ python manage.py migrate
 
  Rodar o server novamente
  $ python manage.py runserver
+
+
+ AULA 12 - CRIANDO O MODEL TRANSACAO
+
+ No arquivo model criaremos outra classe:
+
+ class Transacao(models.Model):
+    data = models.DateTimeField(auto_now_add=True)
+    descricao = models.CharField(max_length=200)
+    valor = models.Charfield(max_length=200)
+    categoria = models.ForeignKey(Categoria)
+    observacoes = models.textField()
+
+    class Meta:
+        verbose_name_plural = 'Transações'
+
+
+ APOS CRIAR MAIS UMA CLASSE (TRANSACAO) DE NOVO:
+ TERMINAL:
+$ python manage.py makemigrations
+cria um arquivo migrations dentro da pasta conta que descreve como o
+o django deve criar as tabelas no banco de dados
+
+TERMINAL: DEPOIS DE CRIAR O MIGRATIONS (makemigrations) rodar o migration
+criado
+$ python manage.py migrate
+
+(base) mateus@hank:~/Documentos/GitHub/projeto_tarefas_Django$ python manage.py makemigrations
+Migrations for 'contas':
+  contas/migrations/0002_transacao.py
+    - Create model Transacao
+
+
+migrate para aplicar
+Operations to perform:
+  Apply all migrations: admin, auth, contas, contenttypes, sessions
+Running migrations:
+  Applying contas.0002_transacao... OK
+
+
+roda o servidor novamente
+python manage.py runserver
+
+VOLTA PARA A PASTA admin.py
+
+from django.contrib import admin
+from.models import Categoria
+from.models import Transacao
+
+admin.site.register(Categoria)
+admin.site.register(Transacao)
+
+##### mudar o nome para aparecer o nome da categoria
+na models*
+
+
+AULA 13: APROFUNDANDO NO SISTEMA DE TEMPLATES
+
+
+AULA 14: DESENVOLVENDO UM CRUD | READ
+PRIMEIRA COISA IMPORTAR O MÓDULO NA view.py
+from .models import transacao
+
+
+Criar uma nova view!
+contas listagem uma def
+
+
+AULA 15 - DESENVOLVIMENDO UM CRUD | CREATE
+modelform --> docs.djangoproject.com
+1ª coisa é criar um arquivo chamado form na pasta templates
+
+e colocar o seguinte código nele:
+from django.forms import ModelForm
+from .models import Transacao
+
+class TransacaoForm(ModelForm):
+    class Meta:
+        model = Transacao
+        fields = ['categoria', 'descricao','data','observacoes', 'email']
+
+
+Depois nas views.py chamar ele:
+
+
+criar outro html no templates/contas (pastas)
+form.html
+.
+.
+.
+<body>
+
+    <form method="post">
+    {% csrf_token %} --> protege o formulário de ataques
+    </form>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
